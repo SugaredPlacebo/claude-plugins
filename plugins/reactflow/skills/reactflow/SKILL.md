@@ -3,12 +3,13 @@ name: reactflow
 description: >
   This skill should be used whenever implementing React Flow (@xyflow/react v12+)
   in a React or Next.js project. Relevant scenarios include: building node-based UIs,
-  flow editors, workflow diagrams, canvas-based graphs, DAG visualizations, or any
-  feature involving draggable nodes and edges. Should also be triggered by mentions of
-  "reactflow", "react flow", "xyflow", custom nodes, handles, edges, or graph canvas
-  components. The library has specific component and hook patterns (nodeTypes
-  memoization, Handle components, container sizing) that cause silent bugs and
-  infinite re-renders if not followed.
+  flow editors, workflow diagrams, canvas-based graphs, DAG visualizations, ER diagrams,
+  entity-relationship diagrams, database schema visualizations, or any feature involving
+  draggable nodes and edges. Also relevant for mentions of "reactflow", "xyflow",
+  "ER diagram", "entity relationship", "database diagram", "crow's foot notation",
+  "cardinality markers", custom nodes, handles, or graph canvas components. The library
+  has specific patterns (nodeTypes memoization, Handle components, container sizing)
+  that cause silent bugs and infinite re-renders if not followed.
 ---
 
 # ReactFlow Skill
@@ -162,6 +163,42 @@ All ReactFlow components require Client Components (`'use client'` at top of fil
 ## Key Imports
 
 For the full categorized import reference, see `references/imports.md`.
+
+---
+
+## ER Diagrams (Entity-Relationship)
+
+Build production-grade ER diagram viewers with React Flow. This covers table nodes with per-column handles, relationship edges with crow's foot cardinality markers, auto-layout (ELK or Dagre), interactive highlighting, and show modes (compact/keys/all fields).
+
+**Architecture:** Schema → `convertSchemaToNodes()` → Node[] + Edge[] → `computeAutoLayout()` → ReactFlow canvas with highlighting.
+
+**Key patterns:**
+- Table nodes render columns as rows, each with its own `<Handle />` for column-level edge connections
+- Relationships are derived from foreign key constraints, not stored directly
+- Cardinality (ONE_TO_ONE vs ONE_TO_MANY) determined by checking if FK columns have a UNIQUE constraint
+- SVG markers for crow's foot notation rendered once outside `<ReactFlow>`, referenced by ID
+- Handle IDs use `${tableName}-${columnName}` format — must be consistent between nodes and edges
+
+**ER diagram canvas props to set:**
+```tsx
+<ReactFlow
+  nodesConnectable={false}    // ER diagrams are read-only
+  edgesFocusable={false}
+  edgesReconnectable={false}
+  deleteKeyCode={null}        // prevent accidental deletion
+/>
+```
+
+### Reference Files
+
+For detailed implementation patterns, consult:
+- **`references/er-diagram-types.md`** — Schema types, relationship derivation, `convertSchemaToNodes`
+- **`references/er-diagram-components.md`** — TableNode, column handles, RelationshipEdge, SVG cardinality markers
+- **`references/er-diagram-layout.md`** — ELK and Dagre auto-layout, show modes, highlighting
+
+### Example Files
+
+- **`examples/er-diagram-canvas.tsx`** — Complete ERD canvas wiring all pieces together
 
 ---
 
