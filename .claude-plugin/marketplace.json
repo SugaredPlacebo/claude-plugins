@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "sugared-plugins",
+  "description": "Custom Claude Code plugins by SugaredPlacebo",
+  "owner": {
+    "name": "SugaredPlacebo"
+  },
+  "plugins": [
+    {
+      "name": "reactflow",
+      "description": "ReactFlow (@xyflow/react) patterns, rules, and references for writing correct node-based UI code. Prevents common pitfalls like infinite re-renders, blank canvases, and broken connections.",
+      "author": {
+        "name": "LaunchPad"
+      },
+      "source": "./plugins/reactflow",
+      "category": "development"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "reactflow",
+  "version": "1.0.0",
+  "description": "ReactFlow (@xyflow/react) patterns, rules, and references for writing correct node-based UI code",
+  "author": {
+    "name": "LaunchPad"
+  }
+}
