@@ -14,15 +14,6 @@
       },
       "source": "./plugins/reactflow",
       "category": "development"
-    },
-    {
-      "name": "cubic",
-      "description": "Cubic AI code review plugin - reviews, learnings, wiki, and codebase scans",
-      "author": {
-        "name": "Cubic"
-      },
-      "source": "./plugins/cubic",
-      "category": "development"
     }
   ]
 }

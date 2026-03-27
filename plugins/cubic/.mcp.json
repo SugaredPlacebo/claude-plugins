@@ -1,9 +1,0 @@
-{
-  "cubic": {
-    "type": "http",
-    "url": "https://www.cubic.dev/api/mcp",
-    "headers": {
-      "Authorization": "Bearer ${CUBIC_API_KEY}"
-    }
-  }
-}
