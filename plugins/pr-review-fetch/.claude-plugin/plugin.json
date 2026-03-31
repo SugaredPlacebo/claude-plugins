@@ -1,0 +1,8 @@
+{
+  "name": "pr-review-fetch",
+  "version": "0.1.0",
+  "description": "Fetch GitHub PR review comments since last commit, with an auto-fix loop mode",
+  "author": {
+    "name": "LaunchPad"
+  }
+}
