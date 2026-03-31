@@ -7,6 +7,7 @@ Custom Claude Code plugin marketplace by SugaredPlacebo.
 | Plugin | Description |
 |--------|-------------|
 | **reactflow** | ReactFlow (@xyflow/react) patterns, rules, and references for writing correct node-based UI code |
+| **pr-review-fetch** | Fetch GitHub PR review comments since last commit, with an auto-fix loop mode |
 
 ## Installation
 

@@ -14,6 +14,15 @@
       },
       "source": "./plugins/reactflow",
       "category": "development"
+    },
+    {
+      "name": "pr-review-fetch",
+      "description": "Fetch GitHub PR review comments since last commit and auto-fix loop that continuously addresses reviewer feedback, pushes fixes, and repeats until clean.",
+      "author": {
+        "name": "LaunchPad"
+      },
+      "source": "./plugins/pr-review-fetch",
+      "category": "development"
     }
   ]
 }
