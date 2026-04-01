@@ -1,0 +1,25 @@
+plugins/pr-review-fetch/skills/fetch-pr-comments/SKILL.md
+  f59a0f8ade7b1690 19-22,54,63,90,93
+plugins/pr-review-fetch/.claude-plugin/plugin.json
+  f59a0f8ade7b1690 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.8",
+  "base_commit_sha": "87bdf9ca8ad52ddb09a263e122639762ae608ac5",
+  "prompts": {
+    "f59a0f8ade7b1690": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "69e88e41-bca8-41f9-b2c6-315087ef98a4",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Berke <berke@inolab.com.tr>",
+      "messages": [],
+      "total_additions": 9,
+      "total_deletions": 5,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    }
+  }
+}
