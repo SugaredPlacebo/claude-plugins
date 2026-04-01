@@ -1,0 +1,29 @@
+plugins/pr-review-fetch/.claude-plugin/plugin.json
+  f59a0f8ade7b1690 3
+plugins/pr-review-fetch/commands/auto-review-loop.md
+  f59a0f8ade7b1690 1-17
+plugins/pr-review-fetch/skills/auto-review-loop/SKILL.md
+  f59a0f8ade7b1690 59,66
+plugins/pr-review-fetch/commands/fetch-pr-comments.md
+  f59a0f8ade7b1690 1-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.8",
+  "base_commit_sha": "e5c5e8f2d5b5bfadb9043a6b45cb6bdf85066655",
+  "prompts": {
+    "f59a0f8ade7b1690": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "69e88e41-bca8-41f9-b2c6-315087ef98a4",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Berke <berke@inolab.com.tr>",
+      "messages": [],
+      "total_additions": 37,
+      "total_deletions": 3,
+      "accepted_lines": 37,
+      "overriden_lines": 0
+    }
+  }
+}
