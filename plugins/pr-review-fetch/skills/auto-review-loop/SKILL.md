@@ -56,14 +56,14 @@ LAST_COMMIT_DATE=$(gh pr view $PR --repo "$OWNER_REPO" --json commits --jq '.com
 Fetch inline review comments:
 
 ```bash
-gh api "/repos/$OWNER/$REPO/pulls/$PR/comments" --paginate --jq \
+gh api "repos/$OWNER/$REPO/pulls/$PR/comments" --paginate --jq \
   "[.[] | select(.created_at > \"$LAST_COMMIT_DATE\") | {user: .user.login, body: .body, path: .path, line: .line, created: .created_at}]"
 ```
 
 Fetch top-level issue comments:
 
 ```bash
-gh api "/repos/$OWNER/$REPO/issues/$PR/comments?since=$LAST_COMMIT_DATE" --paginate --jq \
+gh api "repos/$OWNER/$REPO/issues/$PR/comments?since=$LAST_COMMIT_DATE" --paginate --jq \
   "[.[] | {user: .user.login, body: .body, created: .created_at}]"
 ```
 
