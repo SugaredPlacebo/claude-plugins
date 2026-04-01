@@ -16,6 +16,10 @@ Fetch only the GitHub PR review comments posted after the last commit on the bra
 - `gh` (GitHub CLI) must be authenticated and in PATH
 - `jq` must be available for JSON filtering
 
+## Windows Git Bash Compatibility
+
+When running `gh api` in Git Bash on Windows, never use a leading `/` on API endpoints. Git Bash's MSYS2 layer rewrites anything that looks like a Unix path into a Windows filesystem path (e.g. `/repos/...` becomes `C:/Program Files/Git/repos/...`), which breaks the API call. Use `repos/owner/repo/...` instead of `/repos/owner/repo/...`. This applies to any CLI argument that starts with `/`.
+
 ## Workflow
 
 ### 1. Determine PR and Repository
@@ -47,7 +51,7 @@ LAST_COMMIT_DATE=$(gh pr view $PR --repo "$OWNER_REPO" --json commits --jq '.com
 These are comments attached to specific lines of code during review:
 
 ```bash
-gh api "/repos/$OWNER/$REPO/pulls/$PR/comments" --paginate --jq \
+gh api "repos/$OWNER/$REPO/pulls/$PR/comments" --paginate --jq \
   "[.[] | select(.created_at > \"$LAST_COMMIT_DATE\") | {user: .user.login, body: .body, path: .path, line: .line, created: .created_at}]"
 ```
 
@@ -56,7 +60,7 @@ gh api "/repos/$OWNER/$REPO/pulls/$PR/comments" --paginate --jq \
 These are general conversation comments on the PR thread. The `since` parameter filters server-side:
 
 ```bash
-gh api "/repos/$OWNER/$REPO/issues/$PR/comments?since=$LAST_COMMIT_DATE" --paginate --jq \
+gh api "repos/$OWNER/$REPO/issues/$PR/comments?since=$LAST_COMMIT_DATE" --paginate --jq \
   "[.[] | {user: .user.login, body: .body, created: .created_at}]"
 ```
 
@@ -83,10 +87,10 @@ If no comments found after the last commit, report that clearly.
 OWNER="owner" REPO="repo" PR=123 && \
 LAST_COMMIT_DATE=$(gh pr view $PR --repo "$OWNER/$REPO" --json commits --jq '.commits[-1].committedDate') && \
 echo "--- Review comments (inline) ---" && \
-gh api "/repos/$OWNER/$REPO/pulls/$PR/comments" --paginate --jq \
+gh api "repos/$OWNER/$REPO/pulls/$PR/comments" --paginate --jq \
   "[.[] | select(.created_at > \"$LAST_COMMIT_DATE\") | {user: .user.login, body: .body, path: .path, line: .line, created: .created_at}]" && \
 echo "--- Issue comments (top-level) ---" && \
-gh api "/repos/$OWNER/$REPO/issues/$PR/comments?since=$LAST_COMMIT_DATE" --paginate --jq \
+gh api "repos/$OWNER/$REPO/issues/$PR/comments?since=$LAST_COMMIT_DATE" --paginate --jq \
   "[.[] | {user: .user.login, body: .body, created: .created_at}]"
 ```
 
