@@ -1,0 +1,10 @@
+{
+  "name": "ml-research-mode",
+  "version": "0.1.0",
+  "description": "Autonomous ML research loop for Claude Code. Drives any ml-bench-registered project: train, eval, analyze, modify code, commit, repeat — until stopped.",
+  "author": {
+    "name": "Sugared_Placebo",
+    "email": "berke@inolab.com.tr"
+  },
+  "keywords": ["ml", "research", "autonomous", "training", "ml-bench"]
+}

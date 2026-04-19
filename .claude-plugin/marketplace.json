@@ -23,6 +23,15 @@
       },
       "source": "./plugins/pr-review-fetch",
       "category": "development"
+    },
+    {
+      "name": "ml-research-mode",
+      "description": "Autonomous ML research loop for Claude Code. Drives any ml-bench-registered project: train, eval, analyze, modify code, commit, repeat — until stopped.",
+      "author": {
+        "name": "SugaredPlacebo"
+      },
+      "source": "./plugins/ml-research-mode",
+      "category": "ml"
     }
   ]
 }
